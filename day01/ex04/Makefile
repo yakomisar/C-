@@ -2,7 +2,7 @@
 NAME	=	main
 
 # Project builds
-SRCNAMES	= main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
+SRCNAMES	= main.cpp
 SRC 		= $(addprefix $(SRCDIR), $(SRCNAMES))
 OBJ			= $(SRC:.cpp=.o)
 BUILDDIR 	= ./build/

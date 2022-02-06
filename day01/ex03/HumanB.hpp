@@ -3,15 +3,17 @@
 
 # include <iostream>
 # include <string>
+# include "Weapon.hpp"
 
 class HumanB
 {
 	private:
-		std::string _weapon;
+		Weapon _weapon;
         std::string _name;
 	public:
-		HumanB();
+		HumanB(std::string name);
 		~HumanB();
+		void    setWeapon(Weapon &weaponType);
         void    attack();
 };
 

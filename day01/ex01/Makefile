@@ -10,7 +10,7 @@ BUILDOBJS 	= $(addprefix $(BUILDDIR), $(SRCNAMES:.cpp=.o))
 
 # Optimization and compiler flags
 CC			= c++
-CFLAGS		= -Wall -Werror -Wextra
+CFLAGS		= -std=c++98 -Wall -Werror -Wextra
 
 # Main rule
 all:		$(BUILDDIR) $(NAME)

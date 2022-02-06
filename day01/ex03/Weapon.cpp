@@ -2,13 +2,12 @@
 
 Weapon::Weapon(std::string weaponType) : _type(weaponType)
 {
-    // this->_type = weaponType;
     std::cout << "Constructor for " << this->_type << " called" << std::endl;
 }
 
 Weapon::~Weapon(void)
 {
-    std::cout << "Desctructor for weapon called" << std::endl;
+    std::cout << "Desctructor for " << this->_type << " called" << std::endl;
 }
 
 void    Weapon::setType(std::string type)

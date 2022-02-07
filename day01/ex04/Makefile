@@ -1,5 +1,5 @@
 # Project file
-NAME	=	main
+NAME	=	replace
 
 # Project builds
 SRCNAMES	= main.cpp

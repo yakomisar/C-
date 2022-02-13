@@ -1,9 +1,9 @@
 NAME		= account
 CC 			= c++
-CFLAGS 		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Werror -Wextra
 RM 			= rm -f
 
-SRC_S = Account.cpp
+SRC_S = Account.cpp tests.cpp
 OBJ_S = $(SRC_S:%.cpp=%.o)
 
 %.o: %.c

@@ -10,11 +10,14 @@
 
 #pragma once
 #ifndef __ACCOUNT_H__
-#define __ACCOUNT_H__
+# define __ACCOUNT_H__
 
 // ************************************************************************** //
 //                               Account Class                                //
 // ************************************************************************** //
+
+# include <iostream>
+# include <time.h>
 
 class Account {
 
@@ -44,6 +47,7 @@ private:
 	static int	_totalAmount;
 	static int	_totalNbDeposits;
 	static int	_totalNbWithdrawals;
+	static int	_totalNbCheckAmount;
 
 	static void	_displayTimestamp( void );
 

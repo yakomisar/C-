@@ -1,8 +1,12 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(std::string name) : _name(name), _hit_points(100), _energy_points(50), _attack_damage(20)
+ScavTrap::ScavTrap(std::string name)
 {
-	std::cout << "Constructor [ScavTrap] for " << this->_name << " has been called" << std::endl; 
+	this->_name = name;
+	this->_hit_points = 100;
+	this->_energy_points = 50;
+	this->_energy_points = 20;
+	std::cout << "Constructor [ScavTrap] for " << this->_name << " has been called" << std::endl;
 }
 
 ScavTrap::~ScavTrap()
@@ -17,11 +21,11 @@ void	ScavTrap::guardGate()
 
 ScavTrap::ScavTrap(const ScavTrap &other)
 {
-		std::cout << "Конструктор копирования" << std::endl;
-		this->_name = other._name;
-		this->_hit_points = other._hit_points;
-		this->_energy_points = other._energy_points;
-		this->_attack_damage = other._attack_damage;
+	std::cout << "Конструктор копирования" << std::endl;
+	this->_name = other._name;
+	this->_hit_points = other._hit_points;
+	this->_energy_points = other._energy_points;
+	this->_attack_damage = other._attack_damage;
 }
 
 ScavTrap &ScavTrap::operator=(const ScavTrap  &other)

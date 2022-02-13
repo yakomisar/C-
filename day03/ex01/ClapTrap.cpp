@@ -1,18 +1,44 @@
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name) : _name(name), _hit_points(10), _energy_points(10), _attack_damage(10)
-{
-	std::cout << "Constructor [ClapTrap] for " << this->_name << " has been called" << std::endl;
-}
-
 ClapTrap::ClapTrap()
 {
-	std::cout << "Constructor for DEFAULT [ClapTrap] has been called" << std::endl;
+	std::cout << "Constructor [ClapTrap] w/o parameters called" << std::endl; 
+}
+
+ClapTrap::ClapTrap(std::string name) : _name(name), _hit_points(10), _energy_points(10), _attack_damage(10)
+{
+	std::cout << "Constructor for " << this->_name << " has been called" << std::endl; 
 }
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "Destructor [ClapTrap] for " << this->_name << " has been called" << std::endl;
+	std::cout << "Destructor for " << this->_name << " has been called" << std::endl;
+}
+
+ClapTrap::ClapTrap(const ClapTrap &other)
+{
+	std::cout << "Конструктор копирования" << std::endl;
+	this->_name = other._name;
+	this->_hit_points = other._hit_points;
+	this->_energy_points = other._energy_points;
+	this->_attack_damage = other._attack_damage;	
+}
+
+ClapTrap	&ClapTrap::operator=(const ClapTrap &other)
+{
+	if (this != &other)
+	{
+		std::cout << "Перегруженный оператор присваивания" << std::endl;
+		this->_name = other._name;
+		this->_hit_points = other._hit_points;
+		this->_energy_points = other._energy_points;
+		this->_attack_damage = other._attack_damage;
+	}
+	else 
+	{
+		std::cout << "Самоприсваивание" << std::endl;
+	}
+	return *this;
 }
 
 void	ClapTrap::attack(const std::string &target)

@@ -3,8 +3,8 @@
 
 int	main()
 {
-	ClapTrap clap("ClapBap");
-    ScavTrap scav("ScavBap");
+	ClapTrap clap("Gena");
+    ScavTrap scav("Igor");
     clap.attack("Misha");
     scav.attack("Andrey");
     scav.guardGate();

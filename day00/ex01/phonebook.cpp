@@ -1,27 +1,15 @@
 #include "phonebook.hpp"
 
-Contact::Contact(void)
-{
-	//std::cout << "Constructor (Contact) called" << std::endl;
-	return;
-}
-
-Contact::~Contact(void)
-{
-	//std::cout << "Destructor (Contact) called" << std::endl;
-	return;
-}
-
 PhoneBook::PhoneBook(void)
 {
 	//std::cout << "Constructor (PhoneBook) called" << std::endl;
 	for (int i = 0; i < CONTACTS; i++)
 	{
-		this->contacts[i].index = 0;
-		this->contacts[i].firstName = "";
-		this->contacts[i].lastName = "";
-		this->contacts[i].nickname = "";
-		this->contacts[i].phone = "";
+		this->contacts[i].set_index(0);
+		this->contacts[i].set_firstName("");
+		this->contacts[i].set_lastName("");
+		this->contacts[i].set_nickName("");
+		this->contacts[i].set_phone("");
 	}
 	return;
 }
@@ -29,7 +17,6 @@ PhoneBook::PhoneBook(void)
 PhoneBook::~PhoneBook(void)
 {
 	//std::cout << "Destructor (PhoneBook) called" << std::endl;
-	return;
 }
 
 std::string truncate(std::string str, size_t width, bool show_ellipsis=true)
@@ -42,22 +29,29 @@ std::string truncate(std::string str, size_t width, bool show_ellipsis=true)
 void	fill_contact(Contact *newContact)
 {
 	std::string	darkest_secret;
-	std::string	tmp;
+	std::string	tmp_first;
+	std::string	tmp_last;
+	std::string	tmp_nick;
+	std::string	tmp_phone;
 
 	std::cout << "First name: ";
 	
-	std::getline(std::cin >> std::ws, newContact->firstName);
+	std::getline(std::cin >> std::ws, tmp_first);
+	newContact->set_firstName(tmp_first);
 	std::cout << "Last name: ";
-	std::getline(std::cin >> std::ws, newContact->lastName);
+	std::getline(std::cin >> std::ws, tmp_last);
+	newContact->set_lastName(tmp_last);
 	std::cout << "Nickname: ";
-	std::getline(std::cin >> std::ws, newContact->nickname);
+	std::getline(std::cin >> std::ws, tmp_nick);
+	newContact->set_nickName(tmp_nick);
 	std::cout << "Phone number: ";
-	while (/* condition */)
-	{
-		/* code */
-	}
+	// while (/* condition */)
+	// {
+	// 	/* code */
+	// }
 	
-	std::getline(std::cin >> std::ws, newContact->phone);
+	std::getline(std::cin >> std::ws, tmp_phone);
+	newContact->set_phone(tmp_phone);
 	std::cout << "Darkest secret: ";
 	std::cin >> darkest_secret;
 }
@@ -70,33 +64,33 @@ void	add_func(PhoneBook *phoneBook, int *page)
 	if (*page != 7)
 	{
 		fill_contact(&contact);
-		contact.index = *page + 1;
+		contact.set_index(*page + 1);
 		phoneBook->contacts[*page] = contact;
 		(*page)++;
 	}
 	else
 	{
 		fill_contact(&contact);
-		contact.index = *page + 1;
+		contact.set_index(*page + 1);
 		phoneBook->contacts[*page] = contact;
 	}
 }
 
 void	display_contact(PhoneBook *phoneBook, int idx)
 {
-	if (idx > 7 || idx < 1)
+	if (idx > 8 || idx < 1)
 	{
 		std::cout << "Index out of range" << std::endl;
 		return ;
 	}
 	else
 	{
-		if (phoneBook->contacts[idx - 1].index == idx)
+		if (phoneBook->contacts[idx - 1].get_index() == idx)
 		{
-			std::cout << "Index: " << phoneBook->contacts[idx - 1].index << std::endl;
-			std::cout << "First name: " << phoneBook->contacts[idx - 1].firstName << std::endl;
-			std::cout << "Last name: " << phoneBook->contacts[idx - 1].lastName << std::endl;
-			std::cout << "Nickname: " << phoneBook->contacts[idx - 1].nickname << std::endl;
+			std::cout << "Index: " << phoneBook->contacts[idx - 1].get_index() << std::endl;
+			std::cout << "First name: " << phoneBook->contacts[idx - 1].get_firstName() << std::endl;
+			std::cout << "Last name: " << phoneBook->contacts[idx - 1].get_lastName() << std::endl;
+			std::cout << "Nickname: " << phoneBook->contacts[idx - 1].get_nickName() << std::endl;
 		}
 		else
 			std::cout << "Index out of range" << std::endl;
@@ -115,12 +109,12 @@ void	search_func(PhoneBook *phoneBook)
 	std::cout << std::setw(12) << "Nickname" << std::setw(1) << "|" << "\t" << std::endl;	
 	for (int i = 0; i < CONTACTS; i++)
 	{
-		if (phoneBook->contacts[i].index != 0)
+		if (phoneBook->contacts[i].get_index() != 0)
 		{
-			std::cout << std::setw(12) << phoneBook->contacts[i].index << std::setw(1) << "|" << "\t";
-			std::cout << std::setw(12) << truncate(phoneBook->contacts[i].firstName, 10) << std::setw(1) << "|" << "\t";
-			std::cout << std::setw(12) << truncate(phoneBook->contacts[i].lastName, 10) << std::setw(1) << "|" << "\t";
-			std::cout << std::setw(12) << truncate(phoneBook->contacts[i].nickname, 10) << std::setw(1) << "|" << "\t" << std::endl;
+			std::cout << std::setw(12) << phoneBook->contacts[i].get_index() << std::setw(1) << "|" << "\t";
+			std::cout << std::setw(12) << truncate(phoneBook->contacts[i].get_firstName(), 10) << std::setw(1) << "|" << "\t";
+			std::cout << std::setw(12) << truncate(phoneBook->contacts[i].get_lastName(), 10) << std::setw(1) << "|" << "\t";
+			std::cout << std::setw(12) << truncate(phoneBook->contacts[i].get_nickName(), 10) << std::setw(1) << "|" << "\t" << std::endl;
 		}
 	}
 	std::cout << "Select index: ";
@@ -138,27 +132,4 @@ void	search_func(PhoneBook *phoneBook)
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
-}
-
-int	main(void)
-{
-	int			res;
-	int			page;
-	std::string	command;
-	PhoneBook	phoneBook;
-
-	res = 1;
-	page = 0;
-	while (res)
-	{
-		std::cout << "Please enter your choice:" << std::endl;
-		std::cin >> command;
-		if (command.compare("ADD") == 0)
-			add_func(&phoneBook, &page);
-		if (command.compare("SEARCH") == 0)
-			search_func(&phoneBook);
-		if (command.compare("EXIT") == 0)
-			res = 0;
-	}
-	return (0);
 }

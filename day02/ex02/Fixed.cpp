@@ -49,7 +49,7 @@ Fixed	&Fixed::operator=(const Fixed &other)
 	{
 		std::cout << "Самоприсваивание" << std::endl;
 	}
-	return *this;
+	return (*this);
 }
 
 int		Fixed::getRawBits(void) const

@@ -1,43 +1,25 @@
-# Project file
-NAME	=	megaphone
+NAME		= megaphone
+CC 			= c++
+CFLAGS		= -std=c++98 -Wall -Werror -Wextra
+RM 			= rm -f
 
-# Project builds
-SRCNAMES	= megaphone.cpp
-SRC 		= $(addprefix $(SRCDIR), $(SRCNAMES))
-OBJ			= $(SRC:.cpp=.o)
-BUILDDIR 	= ./build/
-BUILDOBJS 	= $(addprefix $(BUILDDIR), $(SRCNAMES:.cpp=.o))
+SRC_S = megaphone.cpp
+OBJ_S = $(SRC_S:%.cpp=%.o)
 
-# Optimization and compiler flags
-CC			= c++
-CFLAGS		= -Wall -Werror -Wextra
+%.o: %.c
+	$(CC) $(CFLAGS) -I . -c $< -o $@
 
-# Main rule
-all:		$(BUILDDIR) $(NAME)
+all:	$(NAME)
 
-# Object dir rule
-$(BUILDDIR):
-	mkdir -p $(BUILDDIR)
+$(NAME): $(OBJ_S)
+	$(CC) $(CFLAGS) $^ -o $@
 
-# Object dir rule
-$(BUILDDIR)%.o:$(SRCDIR)%.cpp
-	$(CC) $(CFLAGS) -o $@ -c $<
-
-# Project file rule
-$(NAME): $(BUILDOBJS)
-	$(CC) -o $(NAME) $(BUILDOBJS)
-
-# Cleaning up the build files
 clean:
-	rm -rf $(SRCDIR)$(OBJ)
+	$(RM) $(OBJ_S)
 
-# Getting rid of the project file
 fclean: clean
-	rm -rf $(NAME)
-	rm -rf $(BUILDDIR)
+	$(RM) $(NAME)
 
-# Do both of the above
 re: fclean all
 
-# Just in case those files exist in the root dir
-.PHONY: all fclean clean re
+.PHONY: all clean fclean re

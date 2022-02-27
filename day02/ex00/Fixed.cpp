@@ -1,6 +1,6 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed()
+Fixed::Fixed(): fix_int(0)
 {
 	std::cout << "Вызван конструктор" << std::endl;
 }

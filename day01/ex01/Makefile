@@ -1,43 +1,26 @@
 # Project file
-NAME	=	zombieHorde
-
-# Project builds
-SRCNAMES	= Zombie.cpp ZombieHorde.cpp main.cpp
-SRC 		= $(addprefix $(SRCDIR), $(SRCNAMES))
-OBJ			= $(SRC:.cpp=.o)
-BUILDDIR 	= ./build/
-BUILDOBJS 	= $(addprefix $(BUILDDIR), $(SRCNAMES:.cpp=.o))
-
-# Optimization and compiler flags
-CC			= c++
+NAME		= zombieHorde
+CC 			= c++
 CFLAGS		= -std=c++98 -Wall -Werror -Wextra
+RM 			= rm -f
 
-# Main rule
-all:		$(BUILDDIR) $(NAME)
+SRC_S = Zombie.cpp ZombieHorde.cpp main.cpp
+OBJ_S = $(SRC_S:%.cpp=%.o)
 
-# Object dir rule
-$(BUILDDIR):
-	mkdir -p $(BUILDDIR)
+%.o: %.c
+	$(CC) $(CFLAGS) -I . -c $< -o $@
 
-# Object dir rule
-$(BUILDDIR)%.o:$(SRCDIR)%.cpp
-	$(CC) $(CFLAGS) -o $@ -c $<
+all:	$(NAME)
 
-# Project file rule
-$(NAME): $(BUILDOBJS)
-	$(CC) -o $(NAME) $(BUILDOBJS)
+$(NAME): $(OBJ_S)
+	$(CC) $(CFLAGS) $^ -o $@
 
-# Cleaning up the build files
 clean:
-	rm -rf $(SRCDIR)$(OBJ)
+	$(RM) $(OBJ_S)
 
-# Getting rid of the project file
 fclean: clean
-	rm -rf $(NAME)
-	rm -rf $(BUILDDIR)
+	$(RM) $(NAME)
 
-# Do both of the above
 re: fclean all
 
-# Just in case those files exist in the root dir
-.PHONY: all fclean clean re
+.PHONY: all clean fclean re

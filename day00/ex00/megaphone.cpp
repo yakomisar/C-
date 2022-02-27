@@ -37,11 +37,9 @@ int main(int argc, char **argv)
 	{
 		for (int i = 1; i < argc; i++)
 			check_and_print(argv[i]);
+		std::cout << std::endl;
 	}
 	else
-	{
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	}
-	std::cout << std::endl;
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 	return (0);
 }

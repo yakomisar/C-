@@ -4,8 +4,8 @@ int	main()
 {
 	Bureaucrat	boris("Boris");
 	boris.setGrade(10);
-	std::cout << boris.getName() << " with grade " << boris.getGrade() << std::endl;
-
+	//std::cout << boris.getName() << " with grade " << boris.getGrade() << std::endl;
+	std::cout << boris << std::endl;
 	try
 	{
 		boris.decrementGrade();

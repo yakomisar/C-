@@ -36,4 +36,6 @@ class Bureaucrat
 		void		decrementGrade();
 };
 
+std::ostream &operator<<(std::ostream &output, Bureaucrat const &other);
+
 #endif

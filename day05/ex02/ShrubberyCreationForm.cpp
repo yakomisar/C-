@@ -27,33 +27,32 @@ void	ShrubberyCreationForm::checkExec(const Bureaucrat &executor) const
 {
 	this->execute(executor);
 	std::ofstream outfile(this->getName() + "_shrubbery");
-	outfile << ""
-	"oxoxoo    ooxoo"
-  "ooxoxo oo  oxoxooo"
- "oooo xxoxoo ooo ooox"
- "oxo o oxoxo  xoxxoxo"
-  "oxo xooxoooo o ooo"
-    "ooooo  /o/o"
-         "/ /"
-         "|   /"
-         "|  |"
-         "| D|"
-         "|  |"
-         "|  |"
-  "______/_______"
+	outfile << "oxoxoo    ooxoo"<< std::endl;
+  outfile <<"ooxoxo oo  oxoxooo"<< std::endl;
+ outfile <<"oooo xxoxoo ooo ooox"<< std::endl;
+ outfile <<"oxo o oxoxo  xoxxoxo"<< std::endl;
+  outfile <<"oxo xooxoooo o ooo"<< std::endl;
+    outfile <<"     ooooo  /o/o"<< std::endl;
+         outfile <<"     / /"<< std::endl;
+         outfile <<"     |   /"<< std::endl;
+         outfile <<"     |  |"<< std::endl;
+         outfile <<"     | D|"<< std::endl;
+         outfile <<"     |  |"<< std::endl;
+         outfile <<"     |  |"<< std::endl;
+  outfile <<"      ______/_______"<< std::endl;
+outfile << std::endl;
 
-
-     "ccee88oo"
-  "C8O8O8Q8PoOb o8oo"
- "dOB69QO8PdUOpugoO9bD"
-"CgggbU8OU qOp qOdoUOdcb"
-    "6OuU  /p u gcoUodpP"
-      "//////douUP"
-        "////"
-         "|||/"
-         "|||"
-         "|||||"
-   ".....//||||...." << std::endl;
+     outfile <<"   ccee88oo"<< std::endl;
+  outfile <<"C8O8O8Q8PoOb o8oo"<< std::endl;
+ outfile <<"dOB69QO8PdUOpugoO9bD"<< std::endl;
+outfile <<"CgggbU8OU qOp qOdoUOdcb"<< std::endl;
+    outfile <<"6OuU  /p u gcoUodpP"<< std::endl;
+      outfile <<"     //////douUP"<< std::endl;
+        outfile <<"   ////"<< std::endl;
+         outfile <<"   |||/"<< std::endl;
+         outfile <<"   |||"<< std::endl;
+         outfile <<"   |||||"<< std::endl;
+   outfile <<"     .....//||||...." << std::endl;
 	outfile.close();
 }
 

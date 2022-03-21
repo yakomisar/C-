@@ -7,7 +7,8 @@ int	only_zeros(std::string str)
 	i = 0;
 	while (i < str.length() && str[i] != '.')
 		i++;
-	while (str[i] != 'f' || i < str.length())
+	i++;
+	while (i < str.length() - 1)
 	{
 		if (str[i] != '0')
 			return (0);
@@ -37,8 +38,6 @@ int	check_zero(std::string str)
 		if (str[i] == '.' && str[i + 1] == 'f')
 			return (1);
 	}
-	if (only_zeros(str))
-		return (1);
 	if (no_dot(str))
 		return (1);
 	return (0);
@@ -53,6 +52,11 @@ void	check_float(std::string str)
 	{
 		result = atof(str.c_str());
 		if (check_zero(str))
+		{
+			std::cout << static_cast<float>(result) << ".0f" <<std::endl;
+			return ;
+		}
+		if (only_zeros(str))
 		{
 			std::cout << static_cast<float>(result) << ".0f" <<std::endl;
 			return ;

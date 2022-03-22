@@ -4,7 +4,6 @@
 #include <iomanip>
 #include <iostream>
 #include <cstdlib>
-#include <typeinfo>
 
 class Base
 {

@@ -26,18 +26,69 @@ void	identify(Base* p)
 		std::cout << "p is NULL" << std::endl;
 		return ;
 	}
-	const char	*type = typeid(*p).name();
-	std::cout << type[1] << " Class" << std::endl;
+	A	*ptr_a = dynamic_cast<A *>(p);
+	if (ptr_a == NULL)
+		std::cout << "Not an A class" << std::endl;
+	else
+	{
+		std::cout << "A class" << std::endl;
+		return ;
+	}
+	B	*ptr_b = dynamic_cast<B *>(p);
+	if (ptr_b == NULL)
+		std::cout << "Not a B class" << std::endl;
+	else
+	{
+		std::cout << "B class" << std::endl;
+		return ;
+	}
+	C	*ptr_c = dynamic_cast<C *>(p);
+	if (ptr_c == NULL)
+		std::cout << "Not a C class" << std::endl;
+	else
+	{
+		std::cout << "C class" << std::endl;
+		return ;
+	}
 }
 
-// void	identify(Base& p)
-// {
-
-// }
+void	identify(Base& p)
+{
+	try
+	{
+		A ptr_a = dynamic_cast<A&>(p);
+		std::cout << "A" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Cannot cast to A" << std::endl;
+	}
+	try
+	{
+		B ptr_b = dynamic_cast<B&>(p);
+		std::cout << "B" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Cannot cast to B" << std::endl;
+	}
+	try
+	{
+		C ptr_c = dynamic_cast<C&>(p);
+		std::cout << "C" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << "Cannot cast to C" << std::endl;
+	}
+}
 
 int	main()
 {
 	Base	*some = generate();
 	identify(some);
+	if (!some)
+		return (1);
+	identify(*some);
 	return (0);
 }

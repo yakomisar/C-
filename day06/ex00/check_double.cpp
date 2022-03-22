@@ -8,6 +8,16 @@ void	check_double(std::string str)
 	if (is_float(str))
 	{
 		result = atof(str.c_str());
+		if (check_zero(str))
+		{
+			std::cout << static_cast<float>(result) << ".0" <<std::endl;
+			return ;
+		}
+		if (only_zeros(str))
+		{
+			std::cout << static_cast<float>(result) << ".0" <<std::endl;
+			return ;
+		}
 		std::cout << static_cast<float>(result) <<std::endl;
 		return ;
 	}

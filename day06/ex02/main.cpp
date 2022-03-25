@@ -90,5 +90,6 @@ int	main()
 	if (!some)
 		return (1);
 	identify(*some);
+	delete some;
 	return (0);
 }

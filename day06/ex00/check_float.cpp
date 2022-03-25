@@ -48,6 +48,14 @@ void	check_float(std::string str)
 	double	result;
 	
 	std::cout << "float: ";
+	if (check_pseudo(str))
+	{
+		if (str.compare("nan") == 0)
+			std::cout << str << 'f' << std::endl;
+		else
+			std::cout << str << std::endl;
+		return ;
+	}
 	if (is_float(str))
 	{
 		result = atof(str.c_str());
@@ -76,12 +84,9 @@ void	check_float(std::string str)
 		std::cout << result << "f" <<std::endl;
 		return ;
 	}
-	if (check_pseudo(str))
+	if (check_string_chars(str))
 	{
-		if (str.compare("nan") == 0)
-			std::cout << str << 'f' << std::endl;
-		else
-			std::cout << str << std::endl;
+		std::cout << "impossible" << std::endl;
 		return ;
 	}
 }

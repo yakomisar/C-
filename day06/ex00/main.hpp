@@ -20,5 +20,6 @@ void	check_int(std::string str);
 void	check_char(std::string str);
 void	check_float(std::string str);
 void	check_double(std::string str);
+int		check_string_chars(std::string str);
 
 # endif
